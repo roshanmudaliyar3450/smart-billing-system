@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reports – Smart Billing System</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="layout">
+
+    
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">🛒</span>
+        <span class="brand-name">SmartBill</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-link">📊 Dashboard</a>
+        <a href="billing.html"   class="nav-link">🧾 Billing</a>
+        <a href="inventory.html" class="nav-link">📦 Inventory</a>
+        <a href="customers.html" class="nav-link">👥 Customers</a>
+        <a href="reports.html"   class="nav-link active">📈 Reports</a>
+        <a href="settings.html"  class="nav-link">⚙️ Settings</a>
+      </nav>
+      <button class="btn btn-danger btn-full logout-btn" onclick="logoutUser()">🚪 Logout</button>
+    </aside>
+
+    
+    <main class="main-content">
+
+      <div class="topbar">
+        <div>
+          <h2>📈 Reports</h2>
+          <p>Sales summary and business insights</p>
+        </div>
+      </div>
+
+      
+      <div class="stats-grid">
+
+        <div class="stat-card blue">
+          <div class="stat-icon">📅</div>
+          <div class="stat-info">
+            <h3 id="todaySales">₹0.00</h3>
+            <p>Today's Sales</p>
+          </div>
+        </div>
+
+        <div class="stat-card green">
+          <div class="stat-icon">💰</div>
+          <div class="stat-info">
+            <h3 id="rptTotalSales">₹0.00</h3>
+            <p>Total Sales (All Time)</p>
+          </div>
+        </div>
+
+        <div class="stat-card orange">
+          <div class="stat-icon">🧾</div>
+          <div class="stat-info">
+            <h3 id="rptTotalBills">0</h3>
+            <p>Total Bills Generated</p>
+          </div>
+        </div>
+
+        <div class="stat-card purple">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-info">
+            <h3 id="bestProduct">–</h3>
+            <p>Best Selling Product</p>
+          </div>
+        </div>
+
+      </div>
+
+      
+      <div class="section-title">All Bills History</div>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Bill #</th>
+              <th>Customer</th>
+              <th>Items</th>
+              <th>Subtotal</th>
+              <th>GST</th>
+              <th>Grand Total</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="allBillsBody">
+            <tr>
+              <td colspan="7" class="empty-row">No bills found. Create a bill from the Billing page!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      
+      <div class="section-title" style="margin-top: 24px;">Product Sales Breakdown</div>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Total Qty Sold</th>
+              <th>Total Revenue (₹)</th>
+            </tr>
+          </thead>
+          <tbody id="productSalesBody">
+            <tr>
+              <td colspan="3" class="empty-row">No data yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    loadReportsPage();
+  </script>
+
+</body>
+</html>

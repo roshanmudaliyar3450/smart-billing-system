@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Billing – Smart Billing System</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="layout">
+
+    
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">🛒</span>
+        <span class="brand-name">SmartBill</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-link">📊 Dashboard</a>
+        <a href="billing.html"   class="nav-link active">🧾 Billing</a>
+        <a href="inventory.html" class="nav-link">📦 Inventory</a>
+        <a href="customers.html" class="nav-link">👥 Customers</a>
+        <a href="reports.html"   class="nav-link">📈 Reports</a>
+        <a href="settings.html"  class="nav-link">⚙️ Settings</a>
+      </nav>
+      <button class="btn btn-danger btn-full logout-btn" onclick="logoutUser()">🚪 Logout</button>
+    </aside>
+
+    
+    <main class="main-content">
+
+      <div class="topbar">
+        <div>
+          <h2>🧾 Billing</h2>
+          <p>Create a new bill for your customer</p>
+        </div>
+      </div>
+
+      <div class="billing-layout">
+
+        
+        <div class="billing-left">
+          <div class="section-title">Select Products</div>
+
+          
+          <div class="form-group">
+            <label>Customer Name</label>
+            <input type="text" id="customerName" placeholder="Enter customer name (optional)"/>
+          </div>
+          <div class="form-group">
+            <label>Customer Phone</label>
+            <input type="text" id="customerPhone" placeholder="Enter phone number (optional)"/>
+          </div>
+
+          <div class="section-title" style="margin-top:16px;">Available Products</div>
+
+          
+          <input
+            type="text"
+            id="productSearch"
+            placeholder="🔍 Search product..."
+            oninput="searchProducts()"
+            class="search-input"
+          />
+
+          
+          <div class="product-grid" id="productGrid">
+            
+          </div>
+        </div>
+
+        
+        <div class="billing-right">
+          <div class="section-title">🛒 Cart</div>
+
+          
+          <div class="cart-items" id="cartItems">
+            <p class="empty-cart-msg">No items added yet.<br/>Click a product to add it.</p>
+          </div>
+
+          
+          <div class="bill-summary">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="subtotal">₹0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>GST (<span id="gstLabel">18</span>%)</span>
+              <span id="gstAmount">₹0.00</span>
+            </div>
+            <div class="summary-row total-row">
+              <span>Total Amount</span>
+              <span id="totalAmount">₹0.00</span>
+            </div>
+          </div>
+
+          
+          <div class="bill-actions">
+            <button class="btn btn-secondary" onclick="clearCart()">🗑 Clear Cart</button>
+            <button class="btn btn-primary" onclick="generateBill()">Generate Bill</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  
+  <div class="modal-overlay" id="billModal" style="display:none;">
+    <div class="modal-box">
+      <div id="billPrintArea">
+
+        <div class="bill-header">
+          <h2 id="billShopName">My Shop</h2>
+          <p>Smart Billing System</p>
+          <hr/>
+        </div>
+
+        <div class="bill-meta">
+          <div><strong>Bill #:</strong> <span id="billNumber"></span></div>
+          <div><strong>Date:</strong> <span id="billDate"></span></div>
+          <div><strong>Customer:</strong> <span id="billCustomer"></span></div>
+        </div>
+
+        <table class="bill-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="billItemsBody"></tbody>
+        </table>
+
+        <div class="bill-totals">
+          <div class="bill-total-row"><span>Subtotal:</span><span id="billSubtotal"></span></div>
+          <div class="bill-total-row"><span>GST:</span><span id="billGst"></span></div>
+          <div class="bill-total-row bill-grand-total"><span>Grand Total:</span><span id="billGrandTotal"></span></div>
+        </div>
+
+        <p class="bill-footer">Thank you for shopping with us! 🙏</p>
+
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="closeBillModal()">✖ Close</button>
+        <button class="btn btn-primary" onclick="printBill()">🖨 Print Bill</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    loadBillingPage();
+  </script>
+</body>
+</html>

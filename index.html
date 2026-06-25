@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Billing System – Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="login-body">
+
+  <!-- ===== LOGIN PAGE ===== -->
+  <div class="login-container">
+
+    <div class="login-card">
+
+      <!-- Logo / Title -->
+      <div class="login-header">
+        <div class="logo-icon">🛒</div>
+        <h1>Smart Billing System</h1>
+        <p>Sign in to manage your store</p>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" onsubmit="handleLogin(event)">
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter username"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            required
+          />
+        </div>
+
+        <!-- Error message area -->
+        <p id="loginError" class="error-msg" style="display:none;">
+          ❌ Invalid username or password. Try: admin / admin123
+        </p>
+
+        <button type="submit" class="btn btn-primary btn-full">
+          Login →
+        </button>
+
+      </form>
+
+      <!-- Demo credentials hint -->
+      <div class="demo-hint">
+        <strong>Demo Credentials:</strong><br/>
+        Username: <code>admin</code> &nbsp;|&nbsp; Password: <code>admin123</code>
+      </div>
+
+    </div><!-- end login-card -->
+
+  </div><!-- end login-container -->
+
+  <script src="script.js"></script>
+</body>
+</html>

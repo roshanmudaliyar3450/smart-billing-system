@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard – Smart Billing System</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  
+  <div class="layout">
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">🛒</span>
+        <span class="brand-name">SmartBill</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-link active">📊 Dashboard</a>
+        <a href="billing.html"   class="nav-link">🧾 Billing</a>
+        <a href="inventory.html" class="nav-link">📦 Inventory</a>
+        <a href="customers.html" class="nav-link">👥 Customers</a>
+        <a href="reports.html"   class="nav-link">📈 Reports</a>
+        <a href="settings.html"  class="nav-link">⚙️ Settings</a>
+      </nav>
+
+      <button class="btn btn-danger btn-full logout-btn" onclick="logoutUser()">
+        🚪 Logout
+      </button>
+    </aside>
+
+    
+    <main class="main-content">
+
+      
+      <div class="topbar">
+        <div>
+          <h2 id="pageTitle">Dashboard</h2>
+          <p id="welcomeMsg">Welcome back, Admin!</p>
+        </div>
+        <div class="topbar-right">
+          <span id="shopNameDisplay" class="shop-badge">🏪 My Shop</span>
+          <span id="currentDate" class="date-badge"></span>
+        </div>
+      </div>
+
+      
+      <div class="stats-grid">
+
+        <div class="stat-card blue">
+          <div class="stat-icon">📦</div>
+          <div class="stat-info">
+            <h3 id="totalProducts">0</h3>
+            <p>Total Products</p>
+          </div>
+        </div>
+
+        <div class="stat-card green">
+          <div class="stat-icon">💰</div>
+          <div class="stat-info">
+            <h3 id="totalSales">₹0.00</h3>
+            <p>Total Sales</p>
+          </div>
+        </div>
+
+        <div class="stat-card orange">
+          <div class="stat-icon">🧾</div>
+          <div class="stat-info">
+            <h3 id="totalBills">0</h3>
+            <p>Bills Generated</p>
+          </div>
+        </div>
+
+        <div class="stat-card purple">
+          <div class="stat-icon">👥</div>
+          <div class="stat-info">
+            <h3 id="totalCustomers">0</h3>
+            <p>Customers</p>
+          </div>
+        </div>
+
+      </div>
+
+      
+      <div class="section-title">Quick Actions</div>
+      <div class="quick-actions">
+
+        <a href="billing.html" class="quick-card">
+          <span class="quick-icon">🧾</span>
+          <span>New Bill</span>
+        </a>
+
+        <a href="inventory.html" class="quick-card">
+          <span class="quick-icon">📦</span>
+          <span>Manage Products</span>
+        </a>
+
+        <a href="customers.html" class="quick-card">
+          <span class="quick-icon">👥</span>
+          <span>Customers</span>
+        </a>
+
+        <a href="reports.html" class="quick-card">
+          <span class="quick-icon">📈</span>
+          <span>View Reports</span>
+        </a>
+
+      </div>
+
+      
+      <div class="section-title">Recent Bills</div>
+      <div class="table-wrapper">
+        <table class="data-table" id="recentBillsTable">
+          <thead>
+            <tr>
+              <th>Bill #</th>
+              <th>Customer</th>
+              <th>Amount</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="recentBillsBody">
+            <tr><td colspan="4" class="empty-row">No bills yet. Go to Billing to create one!</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    
+    loadDashboard();
+  </script>
+
+</body>
+</html>

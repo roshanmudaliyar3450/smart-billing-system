@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings – Smart Billing System</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="layout">
+
+    
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">🛒</span>
+        <span class="brand-name">SmartBill</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-link">📊 Dashboard</a>
+        <a href="billing.html"   class="nav-link">🧾 Billing</a>
+        <a href="inventory.html" class="nav-link">📦 Inventory</a>
+        <a href="customers.html" class="nav-link">👥 Customers</a>
+        <a href="reports.html"   class="nav-link">📈 Reports</a>
+        <a href="settings.html"  class="nav-link active">⚙️ Settings</a>
+      </nav>
+      <button class="btn btn-danger btn-full logout-btn" onclick="logoutUser()">🚪 Logout</button>
+    </aside>
+
+    
+    <main class="main-content">
+
+      <div class="topbar">
+        <div>
+          <h2>⚙️ Settings</h2>
+          <p>Customize your billing system</p>
+        </div>
+      </div>
+
+      
+      <div class="card form-card">
+        <h3>🏪 Shop Information</h3>
+
+        <div class="form-group">
+          <label>Shop Name</label>
+          <input type="text" id="settingShopName" placeholder="e.g. Ram General Store"/>
+        </div>
+
+        <div class="form-group">
+          <label>Shop Address (shown on bills)</label>
+          <input type="text" id="settingShopAddress" placeholder="e.g. 12 Main Street, Chennai"/>
+        </div>
+
+        <div class="form-group">
+          <label>Shop Phone</label>
+          <input type="text" id="settingShopPhone" placeholder="e.g. 9876543210"/>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" onclick="saveShopSettings()">💾 Save Shop Info</button>
+        </div>
+      </div>
+
+      
+      <div class="card form-card" style="margin-top: 20px;">
+        <h3>💼 Tax Settings</h3>
+
+        <div class="form-group">
+          <label>GST Percentage (%)</label>
+          <input type="number" id="settingGST" placeholder="e.g. 18" min="0" max="100"/>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" onclick="saveGSTSetting()">💾 Save GST</button>
+        </div>
+      </div>
+
+      
+      <div class="card form-card danger-zone" style="margin-top: 20px;">
+        <h3>⚠️ Danger Zone</h3>
+        <p style="color: #888; margin-bottom: 16px;">
+          These actions cannot be undone. Please be careful.
+        </p>
+
+        <div class="danger-buttons">
+          <button class="btn btn-warning" onclick="resetBills()">
+            🗑 Delete All Bills
+          </button>
+          <button class="btn btn-warning" onclick="resetCustomers()">
+            🗑 Delete All Customers
+          </button>
+          <button class="btn btn-danger" onclick="resetAllData()">
+            ⚠️ Reset Everything
+          </button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  
+  <div id="toast" class="toast" style="display:none;"></div>
+
+  <script src="script.js"></script>
+  <script>
+    loadSettingsPage();
+  </script>
+
+</body>
+</html>
